@@ -9,7 +9,7 @@ pip install -e requirements.txt
 ```
 
 使用前请在文件开头和结尾修改相关变量
-并在blrec的WebHook设置中添加http://localhost:27817/test
+并在blrec的WebHook设置中添加http://localhost:27817/webhook
 cookies.json可参考[biliup-rs](https://github.com/ForgQi/biliup-rs)
 
 MySQL表：

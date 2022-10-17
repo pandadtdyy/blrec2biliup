@@ -5,7 +5,7 @@
 # 使用要求
 
 ```
-pip install -e requirements.txt
+pip install -r requirements.txt
 ```
 
 使用前请在文件开头和结尾修改相关变量

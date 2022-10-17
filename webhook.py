@@ -54,7 +54,7 @@ async def recvMsg():
             room_id, escape_string(json.dumps(event["data"]["room_info"], ensure_ascii=False)),
             escape_string(event['date'])))
         r = requests.get(event["data"]["room_info"]["cover"])
-        with open('./' + room_id + '-' + event['date'].split(":")[0] +'.jpg','wb') as f:
+        with open('./' + str(room_id) + '-' + event['date'].split(":")[0] +'.jpg','wb') as f:
             f.write(r.content)
         msg = username + '开播了\n标题:' + title + '\n' + roomurl
     elif event["type"] == "LiveEndedEvent":
@@ -107,14 +107,14 @@ async def recvMsg():
             executor.submit(stream_gears.upload,
                 room_info["video_process"],
                 "./cookies.json", #cookies
-                "【直播回放】" + room_info["title"] + " " + room_raw[0]['time'].split(":")[0] + "点场",
-                27,
-                "直播回放", # tag
-                2,
-                "https://live.bilibili.com/XXXX", #copyright
+                "【直播回放】" + room_info["title"] + " " + room_raw[0]['time'].split(":")[0] + "点场", #title
+                27, #投稿分区
+                "直播回放", #tags，写在一个引号内，逗号分隔
+                2, #1：原创；2：转载
+                "https://live.bilibili.com/XXXX", #转载来源
                 "XXXX直播间：https://live.bilibili.com/XXXX", # introduction
                 "此为自动直播上传，如有问题请及时私信", # dynamic
-                "./" + room_id + '-' + room_raw[0]['time'].split(":")[0] + ".jpg", #cover
+                "./" + str(room_id) + '-' + room_raw[0]['time'].split(":")[0] + ".jpg", #cover
                 None, #延迟发布
                 None, #自动选择上传线路
                 3,
